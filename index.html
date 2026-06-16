@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- 強制禁止瀏覽器快取這個 HTML 檔案 (確保每次讀取最新版) -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>AVA-Wealth 理財中心</title>
+    <!-- 網頁標題加入版本號 -->
+    <title>AVA-Wealth 理財中心 v1.2</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,7 +27,27 @@
         }
         
         .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { font-size: 28px; margin: 0 0 10px 0; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        /* 標題樣式微調，配合版本號顯示 */
+        .header h1 { 
+            font-size: 28px; 
+            margin: 0 0 10px 0; 
+            font-weight: 800; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        /* 頂部版本號小標籤 */
+        .header-version {
+            font-size: 14px;
+            font-weight: 600;
+            color: #101525;
+            background-color: #e0b354;
+            padding: 3px 8px;
+            border-radius: 12px;
+            vertical-align: middle;
+        }
         .header p { font-size: 16px; color: #c9ccd3; margin: 0; font-weight: 300; }
 
         .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 45px; max-width: 340px; width: 100%; }
@@ -41,7 +63,6 @@
         .logo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
         .app-name { font-size: 16px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 
-        /* 進入哲學頁面的按鈕 */
         .btn-philosophy {
             margin-top: 50px; background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15); color: #e0b354;
@@ -50,7 +71,6 @@
         }
         .btn-philosophy:active { background: rgba(255, 255, 255, 0.15); }
 
-        /* 向上滑出的全螢幕頁面 */
         .philosophy-view {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #101525 0%, #1e2a4a 100%);
@@ -74,15 +94,6 @@
         .trade-lose { color: #ff6b6b; } .trade-gain { color: #4ecdc4; }
         .card-desc { font-size: 14px; color: #a0aabf; line-height: 1.6; }
         
-        /* 畫面底部的版本號標籤 */
-        .version-tag {
-            margin-top: auto;
-            padding-top: 40px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* 底部提問區塊的標籤樣式 */
         .tag-item {
             background: rgba(255,255,255,0.1); 
             padding: 8px 16px; 
@@ -96,7 +107,8 @@
 <body>
 
 <div class="header">
-    <h1>AVA-Wealth</h1>
+    <!-- 主標題加入版本號標籤 -->
+    <h1>AVA-Wealth <span class="header-version">v1.2</span></h1>
     <p>您的資產與財富中心</p>
 </div>
 
@@ -114,8 +126,6 @@
 <div class="btn-philosophy" onclick="togglePhilosophy(true)">
     <span>💡</span> 財富金三角：理財必修課
 </div>
-
-<div class="version-tag">v1.2</div>
 
 <div class="philosophy-view" id="philosophyPage">
     <div class="nav-header">
@@ -176,7 +186,7 @@
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            // 這裡的版本號已更新為 v5，強迫瀏覽器檢查最新版
+            // 版本號已更新為 v5，強迫瀏覽器檢查最新版
             navigator.serviceWorker.register('./sw.js?v=5')
                 .then(registration => {
                     console.log('ServiceWorker 註冊成功: ', registration.scope);
