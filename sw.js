@@ -1,6 +1,6 @@
 // 這裡的版本號已經更新為 v3！
 // 每次改完 index.html，只要把這個數字加 1 (例如下次變 v4)，客人的手機就會強制更新介面
-const CACHE_NAME = 'ava-wealth-portal-v1.2'; 
+const CACHE_NAME = 'ava-wealth-portal-v1.4'; 
 
 const urlsToCache = [
   './',
