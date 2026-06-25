@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>AVA-Wealth 理財中心 v1.3</title>
+    <title>AVA-Wealth 理財中心 v1.4</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,23 +26,13 @@
         
         .header { text-align: center; margin-bottom: 50px; }
         .header h1 { 
-            font-size: 28px; 
-            margin: 0 0 10px 0; 
-            font-weight: 800; 
+            font-size: 28px; margin: 0 0 10px 0; font-weight: 800; 
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
         }
         .header-version {
-            font-size: 14px;
-            font-weight: 600;
-            color: #101525;
-            background-color: #e0b354;
-            padding: 3px 8px;
-            border-radius: 12px;
-            vertical-align: middle;
+            font-size: 14px; font-weight: 600; color: #101525;
+            background-color: #e0b354; padding: 3px 8px; border-radius: 12px; vertical-align: middle;
         }
         .header p { font-size: 16px; color: #c9ccd3; margin: 0; font-weight: 300; }
 
@@ -76,36 +66,84 @@
         }
         .philosophy-view.active { transform: translateY(0); }
 
-        /* 底部返回按鈕 */
         .btn-back-bottom {
-            display: block; width: 100%; padding: 16px; margin-top: 20px; margin-bottom: 40px;
+            display: block; width: 100%; padding: 16px; margin-top: 10px; margin-bottom: 40px;
             background: linear-gradient(135deg, #e0b354 0%, #c29536 100%); color: #101525;
             text-align: center; border-radius: 25px; font-size: 16px; font-weight: bold;
             border: none; cursor: pointer; box-shadow: 0 6px 15px rgba(224, 179, 84, 0.3);
             transition: transform 0.2s;
         }
         .btn-back-bottom:active { transform: scale(0.96); }
-
-        .vertical-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 20px; margin-bottom: 15px; }
-        .vertical-card .tool-name { font-size: 18px; font-weight: bold; color: #e0b354; margin-bottom: 10px; }
-        .trade-concept { font-size: 14px; font-weight: 600; background: rgba(0, 0, 0, 0.3); padding: 6px 12px; border-radius: 8px; display: inline-block; margin-bottom: 12px; }
-        .trade-lose { color: #ff6b6b; } .trade-gain { color: #4ecdc4; }
-        .card-desc { font-size: 14px; color: #a0aabf; line-height: 1.6; }
         
+        .version-tag { margin-top: auto; padding-top: 40px; font-size: 12px; color: rgba(255, 255, 255, 0.2); }
+
+        /* ==========================================
+           財富金三角：明亮卡片網格佈局 (左三右三)
+           ========================================== */
+        .triangle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .light-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            color: #101525;
+            border: 1px solid #e4e7eb;
+        }
+
+        .lc-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #1e2a4a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lc-icon { font-size: 18px; }
+
+        .lc-trade {
+            font-size: 11px;
+            font-weight: 700;
+            background: #f5f7fa;
+            border: 1px solid #e4e7eb;
+            color: #3e4c59;
+            padding: 6px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .lc-trade .lose { color: #e53935; }
+        .lc-trade .gain { color: #43a047; }
+
+        .lc-desc {
+            font-size: 12px;
+            color: #52606d;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* 底部標籤 */
         .tag-item {
             background: rgba(255,255,255,0.1); padding: 10px 18px; border-radius: 20px; 
             font-size: 14px; color: #fff; border: 1px solid rgba(255,255,255,0.2);
             font-weight: 500;
         }
-        
-        /* 畫面底部的版本號標籤 */
-        .version-tag { margin-top: auto; padding-top: 40px; font-size: 12px; color: rgba(255, 255, 255, 0.2); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>AVA-Wealth <span class="header-version">v1.3</span></h1>
+    <h1>AVA-Wealth <span class="header-version">v1.4</span></h1>
     <p>您的資產與財富中心</p>
 </div>
 
@@ -124,55 +162,70 @@
     <span>💡</span> 財富金三角：理財必修課
 </div>
 
-<div class="version-tag">v1.3</div>
+<div class="version-tag">v1.4</div>
 
+<!-- ==========================================
+     隱藏的獨立頁面 (財富金三角 v1.4 - 明亮網格版)
+     ========================================== -->
 <div class="philosophy-view" id="philosophyPage">
 
     <h2 style="color: #fff; margin-bottom: 15px; font-size: 24px;">財富金三角<br><span style="color: #e0b354; font-size: 16px; font-weight: normal;">回報、安全與時間的抉擇</span></h2>
     
     <p style="color: #a0aabf; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
-        在理財世界裡，有一個不變的定律：我們無法同時擁有「極高回報」、「絕對安全」和「隨時提款」的完美產品。理財的本質，就是根據您當下的人生階段，選擇最適合的取捨。
+        我們無法同時擁有「極高回報」、「絕對安全」和「隨時提款」的完美產品。理財的本質，就是根據您當下的人生階段，作出最適合的取捨。
     </p>
 
-    <div class="vertical-card">
-        <div class="tool-name">1. 儲蓄戶口 🏦</div>
-        <div class="trade-concept"><span class="trade-gain">極度安全</span> + <span class="trade-gain">極高流動性</span> ➔ <span class="trade-lose">捨棄回報</span></div>
-        <div class="card-desc">客人視角：資金隨時可以提款，看似最安全。但代價是利息微薄，根本追不上通脹。等同於用「未來的真實購買力」，去換取當下的「絕對方便」。適合做應急錢。</div>
+    <!-- 6宮格卡片區 (左三右三，風險由高至低) -->
+    <div class="triangle-grid">
+        
+        <!-- 左1: 股票 (最高風險) -->
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">📈</span> 個別股票</div>
+            <div class="lc-trade"><span class="lose">捨安全</span> ➔ <span class="gain">換高回報</span></div>
+            <div class="lc-desc">客人角度：承受本金波動的心理壓力，換取跑贏通脹及資產倍增的入場券。</div>
+        </div>
+
+        <!-- 右1: ETF (高風險) -->
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">📊</span> ETF 基金</div>
+            <div class="lc-trade"><span class="lose">捨爆發</span> ➔ <span class="gain">換分散風險</span></div>
+            <div class="lc-desc">客人角度：放棄單一股的極高回報，買入大市，換取免除單一公司倒閉的平穩增長。</div>
+        </div>
+
+        <!-- 左2: 儲蓄保險 (中低風險) -->
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">🌱</span> 儲蓄保險</div>
+            <div class="lc-trade"><span class="lose">捨流動</span> ➔ <span class="gain">換長線安心</span></div>
+            <div class="lc-desc">客人角度：初期交出調動自由，以時間作護城河，換取免受市況驚嚇的安穩傳承。</div>
+        </div>
+
+        <!-- 右2: 優質債券 (中低風險) -->
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">📜</span> 優質債券</div>
+            <div class="lc-trade"><span class="lose">捨倍增</span> ➔ <span class="gain">換穩定派息</span></div>
+            <div class="lc-desc">客人角度：借出本金一段時間，承受中度風險，換取合約承諾的定期現金流。</div>
+        </div>
+
+        <!-- 左3: 定期存款 (極低風險) -->
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">🔒</span> 定期存款</div>
+            <div class="lc-trade"><span class="lose">捨自由</span> ➔ <span class="gain">換確定微利</span></div>
+            <div class="lc-desc">客人角度：資金鎖死並面臨罰息風險，換取銀行保證但回報極有限的利息。</div>
+        </div>
+
+        <!-- 右3: 儲蓄戶口 (極低風險) -->
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">🏦</span> 儲蓄戶口</div>
+            <div class="lc-trade"><span class="lose">捨回報</span> ➔ <span class="gain">換極高流動</span></div>
+            <div class="lc-desc">客人角度：隨時提款極度方便，但利息微薄，代價是未來購買力被通脹蠶食。</div>
+        </div>
+
     </div>
 
-    <div class="vertical-card">
-        <div class="tool-name">2. 定期存款 🔒</div>
-        <div class="trade-concept"><span class="trade-gain">極度安全</span> + <span class="trade-gain">確定微利</span> ➔ <span class="trade-lose">捨棄流動性</span></div>
-        <div class="card-desc">客人視角：資金被鎖死三個月至一年，急需用錢會面臨罰息。您實際上是交出了「資金隨時調動的自由」，去跟銀行換取一個 100% 保證但回報有限的利息。</div>
-    </div>
-
-    <div class="vertical-card">
-        <div class="tool-name">3. ETF (交易所買賣基金) 📊</div>
-        <div class="trade-concept"><span class="trade-gain">分散風險</span> + <span class="trade-gain">高流動性</span> ➔ <span class="trade-lose">捨棄爆發力</span></div>
-        <div class="card-desc">客人視角：買入一籃子股票。您放棄了單一股票可能帶來的倍數回報（爆發力），藉此換取不用每天擔驚受怕、避免單一公司倒閉帶來的「分散風險」與平穩增長。</div>
-    </div>
-
-    <div class="vertical-card">
-        <div class="tool-name">4. 個別股票 📈</div>
-        <div class="trade-concept"><span class="trade-gain">高回報</span> + <span class="trade-gain">高流動性</span> ➔ <span class="trade-lose">捨棄安全</span></div>
-        <div class="card-desc">客人視角：赤裸裸地暴露在市場波動之中。這份擔驚受怕、本金虧損的心理壓力（風險），就是換取跑贏通脹、甚至賺取數以倍計資本增值的「入場費」。</div>
-    </div>
-
-    <div class="vertical-card">
-        <div class="tool-name">5. 儲蓄分紅保險 🌱</div>
-        <div class="trade-concept"><span class="trade-gain">安全</span> + <span class="trade-gain">長線回報</span> ➔ <span class="trade-lose">捨棄短期流動性</span></div>
-        <div class="card-desc">客人視角：利用「時間」作為護城河。在計劃初期交出資金隨時調動的自由，換取免受市場波動驚嚇的安心感，以及長線滾雪球般的複利回報，是防守與傳承的基石。</div>
-    </div>
-    
-    <div class="vertical-card">
-        <div class="tool-name">6. 優質債券 📜</div>
-        <div class="trade-concept"><span class="trade-gain">穩定現金流</span> + <span class="trade-gain">中度安全</span> ➔ <span class="trade-lose">捨棄爆發力</span></div>
-        <div class="card-desc">客人視角：將資金借給政府或大型企業一段時間，放棄資金的使用權，換取合約承諾的定期派息。風險比股票低，但缺乏資產倍增的潛力。</div>
-    </div>
-
-    <div style="background: rgba(224, 179, 84, 0.1); border: 1px solid rgba(224, 179, 84, 0.3); border-radius: 16px; padding: 25px 20px; margin-top: 30px; margin-bottom: 20px; text-align: center;">
+    <!-- 底部提問區塊 -->
+    <div style="background: rgba(224, 179, 84, 0.1); border: 1px solid rgba(224, 179, 84, 0.3); border-radius: 16px; padding: 25px 20px; margin-bottom: 25px; text-align: center;">
         <h3 style="color: #e0b354; font-size: 18px; margin-top: 0; margin-bottom: 15px;">您的財富金三角配置？</h3>
-        <p style="color: #ffffff; font-size: 15px; margin-bottom: 25px; line-height: 1.5;">
+        <p style="color: #ffffff; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
             如果只能在這三項中作出取捨，請問對您當前的階段來說，哪一項是您的<span style="color:#e0b354; font-weight:bold;">「首要」</span>考慮？哪一項是<span style="color:#e0b354; font-weight:bold;">「次要」</span>？
         </p>
         
@@ -183,6 +236,7 @@
         </div>
     </div>
 
+    <!-- 返回首頁按鈕 -->
     <button class="btn-back-bottom" onclick="togglePhilosophy(false)">返回首頁</button>
 
 </div>
@@ -198,8 +252,8 @@
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            // 版本號更新為 v6，強迫瀏覽器檢查最新版
-            navigator.serviceWorker.register('./sw.js?v=6')
+            // 版本號更新為 v7，強迫瀏覽器檢查最新版
+            navigator.serviceWorker.register('./sw.js?v=7')
                 .then(registration => {
                     console.log('ServiceWorker 註冊成功: ', registration.scope);
                 })
