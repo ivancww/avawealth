@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>AVA-Wealth 理財中心 v1.6</title>
+    <title>AVA-Wealth 理財中心 v1.7</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -87,6 +87,7 @@
 </head>
 <body>
 
+<!-- 登入鎖屏畫面 -->
 <div id="loginScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #101525 0%, #1e2a4a 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;">
     <div class="logo-wrapper" style="width: 100px; height: 100px; margin-bottom: 20px;">
         <img src="avawealth-192.png" alt="AVA Logo" style="width: 100%; height: 100%; border-radius: 22px; object-fit: cover;">
@@ -98,8 +99,9 @@
     <p id="loginError" style="color: #ff6b6b; font-size: 14px; margin-top: 15px; display: none;">密碼錯誤，請重新輸入</p>
 </div>
 
+<!-- 主要內容 -->
 <div class="header">
-    <h1>AVA-Wealth <span class="header-version">v1.6</span></h1>
+    <h1>AVA-Wealth <span class="header-version">v1.7</span></h1>
     <p>您的資產與財富中心</p>
 </div>
 
@@ -118,13 +120,64 @@
     <span>💡</span> 財富金三角：理財必修課
 </div>
 
-<div class="version-tag">v1.6</div>
+<div class="version-tag">v1.7</div>
 
+<!-- 財富金三角介面 -->
 <div class="philosophy-view" id="philosophyPage">
-    <!-- 金三角內容省略... (維持原樣) -->
+    <h2 style="color: #fff; margin-bottom: 15px; font-size: 24px;">財富金三角<br><span style="color: #e0b354; font-size: 16px; font-weight: normal;">回報、安全與時間的抉擇</span></h2>
+    <p style="color: #a0aabf; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
+        我們無法同時擁有「極高回報」、「絕對安全」和「隨時提款」的完美產品。理財的本質，就是根據您當下的人生階段，作出最適合的取捨。
+    </p>
+
+    <div class="triangle-grid">
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">📈</span> 個別股票</div>
+            <div class="lc-trade"><span class="lose">捨安全</span> ➔ <span class="gain">換高回報</span></div>
+            <div class="lc-desc">客人角度：承受本金波動的心理壓力，換取跑贏通脹及資產倍增的入場券。</div>
+        </div>
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">📊</span> ETF 基金</div>
+            <div class="lc-trade"><span class="lose">捨爆發</span> ➔ <span class="gain">換分散風險</span></div>
+            <div class="lc-desc">客人角度：放棄單一股的極高回報，買入大市，換取免除單一公司倒閉的平穩增長。</div>
+        </div>
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">🌱</span> 儲蓄保險</div>
+            <div class="lc-trade"><span class="lose">捨流動</span> ➔ <span class="gain">換長線安心</span></div>
+            <div class="lc-desc">客人角度：初期交出調動自由，以時間作護城河，換取免受市況驚嚇的安穩傳承。</div>
+        </div>
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">📜</span> 優質債券</div>
+            <div class="lc-trade"><span class="lose">捨倍增</span> ➔ <span class="gain">換穩定派息</span></div>
+            <div class="lc-desc">客人角度：借出本金一段時間，承受中度風險，換取合約承諾的定期現金流。</div>
+        </div>
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">🔒</span> 定期存款</div>
+            <div class="lc-trade"><span class="lose">捨自由</span> ➔ <span class="gain">換確定微利</span></div>
+            <div class="lc-desc">客人角度：資金鎖死並面臨罰息風險，換取銀行保證但回報極有限的利息。</div>
+        </div>
+        <div class="light-card">
+            <div class="lc-title"><span class="lc-icon">🏦</span> 儲蓄戶口</div>
+            <div class="lc-trade"><span class="lose">捨回報</span> ➔ <span class="gain">換極高流動</span></div>
+            <div class="lc-desc">客人角度：隨時提款極度方便，但利息微薄，代價是未來購買力被通脹蠶食。</div>
+        </div>
+    </div>
+
+    <div style="background: rgba(224, 179, 84, 0.1); border: 1px solid rgba(224, 179, 84, 0.3); border-radius: 16px; padding: 25px 20px; margin-bottom: 25px; text-align: center;">
+        <h3 style="color: #e0b354; font-size: 18px; margin-top: 0; margin-bottom: 15px;">您的財富金三角配置？</h3>
+        <p style="color: #ffffff; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+            如果只能在這三項中作出取捨，請問對您當前的階段來說，哪一項是您的<span style="color:#e0b354; font-weight:bold;">「首要」</span>考慮？哪一項是<span style="color:#e0b354; font-weight:bold;">「次要」</span>？
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+            <span class="tag-item">🛡️ 資金絕對安全 (保本)</span>
+            <span class="tag-item">🚀 追求高回報潛力</span>
+            <span class="tag-item">⏱️ 資金隨時可調動</span>
+        </div>
+    </div>
+
     <button class="btn-back-bottom" onclick="togglePhilosophy(false)">返回首頁</button>
 </div>
 
+<!-- 介面及登入控制腳本 -->
 <script>
     function togglePhilosophy(show) {
         const page = document.getElementById('philosophyPage');
@@ -133,40 +186,81 @@
     }
 
     const GAS_URL = 'https://script.google.com/macros/s/AKfycbwmpVo8uGg8ZaC-oTFKdTdLAgCibw8FhD0UpcuMA6wWKwV0GWPWhO7hfFqL4NYRds2v/exec';
-    
+
+    // 頁面載入時檢查是否已有密碼紀錄
+    window.addEventListener('load', () => {
+        const savedPassword = localStorage.getItem('ava_auth_password');
+        if (savedPassword) {
+            loginScreen.style.display = 'none';
+            checkPasswordUpdates(savedPassword);
+        }
+    });
+
+    // 終極兼容版登入驗證
     async function verifyLogin() {
         const inputVal = pwdInput.value.trim();
         if (!inputVal) return;
+        
         loginBtn.innerText = '驗證中...';
         loginError.style.display = 'none';
 
         try {
-            const response = await fetch(GAS_URL + "?pwd=" + encodeURIComponent(inputVal), { method: 'GET', redirect: 'follow' });
+            const response = await fetch(GAS_URL + "?pwd=" + encodeURIComponent(inputVal), { 
+                method: 'GET', 
+                redirect: 'follow' 
+            });
             const data = await response.json();
-            if (data.status === "success") {
+            
+            // 雙重檢查：支援新版 (status: success) 或舊版/共用版 (直接回傳 password)
+            if (data.status === "success" || data.password === inputVal) {
                 localStorage.setItem('ava_auth_password', inputVal);
                 loginScreen.style.display = 'none';
             } else {
-                loginError.innerText = '密碼錯誤';
+                loginError.innerText = '密碼錯誤，請重新輸入';
                 loginError.style.display = 'block';
             }
         } catch (e) {
-            loginError.innerText = '連線失敗';
+            console.error("連線錯誤詳情:", e);
+            loginError.innerText = '連線失敗，請檢查網絡或 GAS 權限';
             loginError.style.display = 'block';
         }
         loginBtn.innerText = '登入系統';
     }
 
-    window.addEventListener('load', () => {
-        const saved = localStorage.getItem('ava_auth_password');
-        if (saved) {
-            loginScreen.style.display = 'none';
+    // 終極兼容版背景更新檢查
+    async function checkPasswordUpdates(savedPassword) {
+        try {
+            const response = await fetch(GAS_URL + "?pwd=" + encodeURIComponent(savedPassword), { 
+                method: 'GET', 
+                redirect: 'follow' 
+            });
+            const data = await response.json();
+            
+            // 只有當新舊兩種驗證模式都唔通過時，先判定密碼失效
+            if (data.status !== "success" && data.password !== savedPassword) {
+                localStorage.removeItem('ava_auth_password');
+                loginScreen.style.display = 'flex';
+                loginError.innerText = '團隊密碼已更新，請重新登入';
+                loginError.style.display = 'block';
+            }
+        } catch (e) {
+            console.log('離線狀態或連線異常，略過背景檢查');
         }
-    });
+    }
 
+    // 註冊 Service Worker 並強制更新快取
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js?v=9');
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js?v=10')
+                .then(registration => {
+                    console.log('ServiceWorker 註冊成功: ', registration.scope);
+                })
+                .catch(err => {
+                    console.log('ServiceWorker 註冊失敗: ', err);
+                });
+        });
     }
 </script>
+
 </body>
 </html>
